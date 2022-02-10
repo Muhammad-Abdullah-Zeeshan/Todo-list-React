@@ -1,0 +1,84 @@
+:root {
+  --theme-color: #366fa5;
+}
+
+.mainContainer {
+  box-shadow: -5px 10px 27px rgba(0, 0, 0, 0.25);
+  width: 340px;
+  border-radius: 10px;
+  transition: 500ms ease-in-out;
+}
+
+.header {
+  background-color: var(--theme-color);
+  border-radius: 10px 10px 0 0;
+  height: 72px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.title {
+  font-weight: bold;
+  font-size: 30px;
+  color: white;
+  margin-bottom: 30px;
+}
+
+.details {
+  height: 185px;
+  margin: 30px;
+  overflow-y: auto;
+  font-size: 20px;
+}
+
+.mainContainer hr {
+  margin-bottom: 0px;
+  border: none;
+  background-color: rgb(63, 63, 63);
+}
+
+.buttons {
+  height: 70px;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.buttons button {
+  color: white;
+  border: none;
+  height: 46px;
+  width: 144px;
+  border-radius: 6px;
+  font-size: 15px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: 300ms ease-in-out;
+}
+
+.mark-done {
+  background-color: var(--theme-color);
+}
+
+.mark-done i {
+  color: #41e93d;
+  transform: scale(1.4);
+  padding: 6px;
+}
+
+.mark-done:hover {
+  background-color: #265d90;
+}
+
+.remove {
+  background-color: #b90c0c;
+}
+
+.remove:hover {
+  background-color: #990909;
+}
+
+.fa-trash-alt {
+  padding-right: 5px;
+}
