@@ -3,7 +3,7 @@ import { useState, useEffect } from 'react';
 import './TodoContainer.css';
 import TodoItems from '../TodoItems/todoItems';
 import Modal from '../Modal/Modal'
-import 'https://kit.fontawesome.com/8b96a632fe.js';
+//import 'https://kit.fontawesome.com/8b96a632fe.js';
 
 
 export default function TodoContainer() {

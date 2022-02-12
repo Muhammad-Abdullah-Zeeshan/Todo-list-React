@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDom from 'react-dom';
 import './Modal.css';
-import 'https://kit.fontawesome.com/8b96a632fe.js'
+//import 'https://kit.fontawesome.com/8b96a632fe.js'
 
 export default function Modal(props) {
     

@@ -1,6 +1,6 @@
 import React from 'react';
 import './todoItems.css';
-import 'https://kit.fontawesome.com/8b96a632fe.js';
+//import 'https://kit.fontawesome.com/8b96a632fe.js';
 
 
 export default function todoItems(props) {
