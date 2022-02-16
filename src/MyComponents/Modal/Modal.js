@@ -1,16 +1,25 @@
 import React from 'react';
 import ReactDom from 'react-dom';
 import './Modal.css';
-//import 'https://kit.fontawesome.com/8b96a632fe.js'
+import { ReactComponent as Cross} from '../SVGs/Cross.svg';
+import { ReactComponent as Tick} from '../SVGs/Tick.svg'
 
 export default function Modal(props) {
     
+    function closeModal(param) {
+        document.querySelector('.modalContainer').setAttribute('class', 'fade-out');
+        setTimeout(()=> {
+            props.modalState(false);
+            props.cancel(param);
+        }, 480)
+    }
+
   return ReactDom.createPortal (
     <>
         
         <div className='modal-bg' onClick={()=> {
-            props.modalState(false);
-            props.cancel(true);
+            closeModal(true);
+            
         }}>
         </div>
             
@@ -20,10 +29,9 @@ export default function Modal(props) {
                     <i className="far fa-edit"></i>
                     Details
                 </span>
-                <i className="fas fa-times" onClick={()=> {
-                    props.modalState(false);
-                    props.cancel(true);
-                }}></i>
+                <Cross className='cross' onClick={()=> {
+                    closeModal(true);
+                }} />
             </header>
             <div className="modalBody">
                 <div className="title">
@@ -37,10 +45,9 @@ export default function Modal(props) {
             </div>
             <div className="modalBtn">
                 <button className="cancel" onClick={()=> {
-                    props.modalState(false);
-                    props.cancel(true);
+                    closeModal(true);
                 }}>
-                    <i className="far fa-times-circle"></i>
+                    <Cross className='cross' />
                     Cancel
                 </button>
                 <button className="save" onClick={()=> {
@@ -49,8 +56,7 @@ export default function Modal(props) {
                         props.title(document.querySelector('.title-input').value);
                         props.detail(document.querySelector('.details-input').value);
 
-                        props.modalState(false);
-                        props.cancel(false);
+                        closeModal(false);
 
                     }
 
@@ -58,7 +64,7 @@ export default function Modal(props) {
                         alert('Some fields are Empty!');
                     }
                 }}>
-                    <i className="far fa-check-circle"></i>
+                    <Tick className='tick' />
                     Save
                 </button>
             </div>

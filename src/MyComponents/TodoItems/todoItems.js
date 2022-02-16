@@ -1,6 +1,7 @@
 import React from 'react';
 import './todoItems.css';
-//import 'https://kit.fontawesome.com/8b96a632fe.js';
+import { ReactComponent as Tick } from  '../SVGs/Tick.svg';
+import { ReactComponent as Trash } from '../SVGs/Trash.svg'
 
 
 export default function todoItems(props) {
@@ -8,18 +9,15 @@ export default function todoItems(props) {
     function handleRemove(thisState) {
         document.getElementsByClassName('mainContainer')[props.index].style.opacity = '0.5';
         document.getElementsByClassName('mainContainer')[props.index].querySelector('.remove').disabled = true;
-
-        setTimeout(()=> {
-            let filteredArr = [];
         
-            props.arr.forEach((todo)=> {
-                if(props.arr.indexOf(todo) !== props.index) {
-                    filteredArr.push(todo);
-                }
-            })
-
+        setTimeout(()=> {
+            let filteredArr = props.arr.filter((items)=> {
+                return props.index !== props.arr.indexOf(items)
+                })
             props.setTodo(filteredArr);
-        }, 1000);
+        
+
+        }, 300);
 
         
     }
@@ -41,13 +39,13 @@ export default function todoItems(props) {
             <hr/>
             <div className="buttons">
                 <button className="mark-done" onClick={handleDone}>
-                    <i className="far fa-check-circle"></i>
+                    <Tick className = 'tick'/>
                     Mark as Done
                 </button>
                 <button className="remove" onClick={()=> {
                     handleRemove('remove');
                 }}>
-                    <i className="far fa-trash-alt"></i>    
+                    <Trash className='trash'/>    
                     Remove
                 </button>
             </div>

@@ -44,14 +44,15 @@
   border-radius: 8px;
   cursor: pointer;
   transition: 200ms ease-in-out;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
 }
 
-.fa-plus {
-  margin-right: 10px;
+.plus {
+  transform: scale(1.2);
   border: 2px solid white;
-  padding: 6px;
-  border-radius: 50%;
-  font-size: 18px;
+  border-radius: 20px;
 }
 
 .add:hover {

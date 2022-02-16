@@ -1,9 +1,9 @@
 import React, { useRef } from 'react';
 import { useState, useEffect } from 'react';
 import './TodoContainer.css';
+import { ReactComponent as Add} from '../SVGs/Add.svg';
 import TodoItems from '../TodoItems/todoItems';
-import Modal from '../Modal/Modal'
-//import 'https://kit.fontawesome.com/8b96a632fe.js';
+import Modal from '../Modal/Modal';
 
 
 export default function TodoContainer() {
@@ -20,6 +20,7 @@ export default function TodoContainer() {
         document.documentElement.scrollTop = 0;
 
     }
+    console.log(todo);
 
     if(modalState) {
         document.body.style.overflowY = 'hidden';
@@ -75,7 +76,7 @@ export default function TodoContainer() {
                 }
             </div>
             <button className="add" onClick={handleClick}>
-            <i className="fas fa-plus"></i>
+                <Add className='plus'/>
                 Add a Todo
             </button>
         </div>
