@@ -7,11 +7,8 @@ import { ReactComponent as Tick} from '../SVGs/Tick.svg'
 export default function Modal(props) {
     
     function closeModal(param) {
-        document.querySelector('.modalContainer').setAttribute('class', 'fade-out');
-        setTimeout(()=> {
-            props.modalState(false);
-            props.cancel(param);
-        }, 480)
+        props.modalState(false);
+        props.cancel(param);
     }
 
   return ReactDom.createPortal (
@@ -53,11 +50,11 @@ export default function Modal(props) {
                 <button className="save" onClick={()=> {
 
                     if(document.querySelector('.title-input').value !== '') {
+        
                         props.title(document.querySelector('.title-input').value);
                         props.detail(document.querySelector('.details-input').value);
 
                         closeModal(false);
-
                     }
 
                     else {

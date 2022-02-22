@@ -2,7 +2,7 @@ import React, { useRef } from 'react';
 import { useState, useEffect } from 'react';
 import './TodoContainer.css';
 import { ReactComponent as Add} from '../SVGs/Add.svg';
-import TodoItems from '../TodoItems/todoItems';
+import TodoItems from '../TodoItems/TodoItems';
 import Modal from '../Modal/Modal';
 
 
@@ -20,7 +20,6 @@ export default function TodoContainer() {
         document.documentElement.scrollTop = 0;
 
     }
-    console.log(todo);
 
     if(modalState) {
         document.body.style.overflowY = 'hidden';
@@ -59,7 +58,7 @@ export default function TodoContainer() {
                 {
                     !modalState ?
                         null
-                    : <Modal modalState = {setModalState} title = {setTodoTitle} detail = {setTodoDetail} cancel = {setModalCancel} />
+                    : <Modal modalState = {setModalState} title = {setTodoTitle} detail = {setTodoDetail} cancel = {setModalCancel} todo = {todo} />
                 }
             </div>
             <div className="tododiv">
@@ -69,7 +68,7 @@ export default function TodoContainer() {
                     !isEmpty ?
                     todo.map((eachTodo)=> {
                         let i = todo.indexOf(eachTodo);
-                        return <TodoItems title = {eachTodo.title} detail = {eachTodo.detail} index = {i} arr = {todo} setTodo = {setTodo} key = {eachTodo.title}/>
+                        return <TodoItems title = {eachTodo.title} detail = {eachTodo.detail} index = {i} arr = {todo} setTodo = {setTodo} key = {eachTodo.title} />
                     })
                     : <span>Nothing</span>
                         

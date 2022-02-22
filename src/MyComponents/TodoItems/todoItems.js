@@ -1,10 +1,10 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import './todoItems.css';
 import { ReactComponent as Tick } from  '../SVGs/Tick.svg';
 import { ReactComponent as Trash } from '../SVGs/Trash.svg'
 
 
-export default function todoItems(props) {
+export default function TodoItems(props) {
 
     function handleRemove(thisState) {
         document.getElementsByClassName('mainContainer')[props.index].style.opacity = '0.5';
@@ -19,15 +19,27 @@ export default function todoItems(props) {
 
         }, 300);
 
-        
     }
+
+    function fadeIn() {
+        setTimeout(()=> {
+            document.getElementsByClassName('mainContainer')[props.index].style.transform = 'translateX(0px)';
+
+            document.getElementsByClassName('mainContainer')[props.index].style.opacity = '1';
+        }, 30)
+    }
+
+    useEffect(()=> {
+        fadeIn()
+    })
+
 
     function handleDone() {
         handleRemove('done');
     }
 
     return (
-        <div className="mainContainer">
+        <div className="mainContainer" >
             <div className="header">
                 <span className="title">{props.title}</span>
             </div>

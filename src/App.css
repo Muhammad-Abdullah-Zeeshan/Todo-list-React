@@ -36,3 +36,15 @@ body {
   color: white;
   font-size: 20px;
 }
+
+.head-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 5px;
+  cursor: pointer;
+}
+
+.logo {
+  width: 40px;
+}
