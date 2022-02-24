@@ -13,8 +13,10 @@ export default function TodoContainer() {
 
     const [modalState, setModalState] = useState(false);
     const [modalCancel, setModalCancel] = useState(false);
+    const [modalEdit, setModalEdit] = useState([]);
 
     function handleClick() {
+        setModalEdit([false, null]);
         setModalState(true)
         document.body.scrollTop = 0;
         document.documentElement.scrollTop = 0;
@@ -37,12 +39,18 @@ export default function TodoContainer() {
         else{
             if(!modalState) {
                 if(!modalCancel) {
-                    let Title = todoTitle;
-                    let Detail = todoDetail;
-                    setTodo(prevTodo => [...prevTodo, {
-                        title: Title.toUpperCase(),
-                        detail: Detail
-                    }])
+
+                    if(modalEdit[0] === true) {
+
+                    }
+                    else{
+                        let Title = todoTitle;
+                        let Detail = todoDetail;
+                        setTodo(prevTodo => [...prevTodo, {
+                            title: Title.toUpperCase(),
+                            detail: Detail
+                        }])
+                    }
                 }
     
             }
@@ -58,7 +66,7 @@ export default function TodoContainer() {
                 {
                     !modalState ?
                         null
-                    : <Modal modalState = {setModalState} title = {setTodoTitle} detail = {setTodoDetail} cancel = {setModalCancel} todo = {todo} />
+                    : <Modal modalState = {setModalState} title = {setTodoTitle} detail = {setTodoDetail} cancel = {setModalCancel} todo = {todo} setTodo = {setTodo} method = {modalEdit} />
                 }
             </div>
             <div className="tododiv">
@@ -68,7 +76,7 @@ export default function TodoContainer() {
                     !isEmpty ?
                     todo.map((eachTodo)=> {
                         let i = todo.indexOf(eachTodo);
-                        return <TodoItems title = {eachTodo.title} detail = {eachTodo.detail} index = {i} arr = {todo} setTodo = {setTodo} key = {eachTodo.title} />
+                        return <TodoItems title = {eachTodo.title} detail = {eachTodo.detail} index = {i} arr = {todo} setTodo = {setTodo} key = {eachTodo.title} modalState={modalState} setModalState={setModalState} setModalEdit={setModalEdit} method = {modalEdit} />
                     })
                     : <span>Nothing</span>
                         

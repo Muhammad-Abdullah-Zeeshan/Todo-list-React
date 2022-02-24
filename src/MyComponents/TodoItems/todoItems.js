@@ -1,10 +1,12 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useRef } from 'react';
 import './todoItems.css';
 import { ReactComponent as Tick } from  '../SVGs/Tick.svg';
 import { ReactComponent as Trash } from '../SVGs/Trash.svg'
+import { ReactComponent as Edit } from '../SVGs/Edit.svg';
 
 
 export default function TodoItems(props) {
+
 
     function handleRemove(thisState) {
         document.getElementsByClassName('mainContainer')[props.index].style.opacity = '0.5';
@@ -31,6 +33,10 @@ export default function TodoItems(props) {
 
     useEffect(()=> {
         fadeIn()
+        let count = document.getElementsByClassName('title')[props.index].innerHTML;
+        if(count.length > 12) {
+            document.getElementsByClassName('title')[props.index].style.fontSize = '22px';
+        }
     })
 
 
@@ -38,10 +44,20 @@ export default function TodoItems(props) {
         handleRemove('done');
     }
 
+    function handleEditClick() {
+        document.body.scrollTop = 0;
+        document.documentElement.scrollTop = 0;
+        props.setModalEdit([true, props.index]);
+        props.setModalState(true);
+    }
+
     return (
-        <div className="mainContainer" >
+        <div className="mainContainer" id='main-container'>
             <div className="header">
                 <span className="title">{props.title}</span>
+                <div className="edit-div">
+                    <Edit className="edit" onClick={handleEditClick} />
+                </div>
             </div>
 
             <div className="details">
